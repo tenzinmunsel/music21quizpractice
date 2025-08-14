@@ -1,107 +1,109 @@
 /* This file contains all the custom CSS for the Nucleooo app */
 
-/*
-  Styling Guide Colors:
-  - #A8F9FF (Light Cyan)
-  - #9AE5E6 (Light Teal)
-  - #81A094 (Sage Green)
-  - #775B59 (Brown)
-  - #32161F (Dark Red/Brown)
-
-  Styling Guide Fonts:
-  - Nanum Brush Script (for titles/logo)
-  - Architects Daughter (for body/text)
-*/
-
-/* --- Color Variables for the single light theme --- */
+/* --- Color Variables based on the style guide but with a new twist --- */
 :root {
-    --color-primary: #A8F9FF;
-    --color-secondary: #9AE5E6;
-    --color-tertiary: #81A094;
-    --color-text: #1a202c;
-    --color-bg: #ffffff;
-    --color-card-bg: #ffffff;
-    --color-correct: #22c55e;
-    --color-wrong: #ef4444;
-    --color-hover: #f0f4f8;
+    --color-primary: #A8F9FF; /* Light Cyan */
+    --color-secondary: #9AE5E6; /* Light Teal */
+    --color-tertiary: #81A094; /* Sage Green */
+    --color-correct: #4ade80; /* A modern green */
+    --color-wrong: #f87171; /* A modern red */
 
-    --bs-body-bg: var(--color-bg);
-    --bs-body-color: var(--color-text);
-    --bs-navbar-bg: var(--color-bg);
-    --bs-navbar-color: var(--color-text);
-    --bs-card-bg: var(--color-card-bg);
-    --bs-card-color: var(--color-text);
+    /* Light Theme variables (default) */
+    --color-text-dark: #32161F; /* Dark Red/Brown */
+    --color-text-light: #775B59; /* Brown */
+    --color-bg-main: #f0f8ff; /* A soft, light background */
+    --color-card-bg: #ffffff;
+    --color-border: #e9ecef;
+    --color-hover: #f1f1f1;
 }
 
 /* --- Font Definitions --- */
 .logo-text {
     font-family: 'Nanum Brush Script', cursive;
     font-size: 2.5rem;
+    color: var(--color-text-dark);
 }
 .header-font {
     font-family: 'Nanum Brush Script', cursive;
+    color: var(--color-text-dark);
 }
 .body-font {
     font-family: 'Architects Daughter', cursive;
+    color: var(--color-text-light);
 }
 body {
-    /* Background animation */
-    background: linear-gradient(270deg, var(--color-primary), var(--color-secondary));
-    background-size: 200% 200%;
-    animation: background-pan 15s ease infinite;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-}
-
-/* Background animation keyframes */
-@keyframes background-pan {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.card {
-    background-color: var(--bs-card-bg);
-    color: var(--bs-card-color);
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-}
-.navbar {
-    background-color: var(--bs-navbar-bg);
-    color: var(--bs-navbar-color);
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-}
-.navbar .nav-link, .navbar .navbar-brand .logo-text, .navbar-toggler-icon {
-    color: var(--bs-navbar-color);
+    background: var(--color-bg-main);
 }
 
 /* --- Component Styles --- */
-.btn-custom {
+.custom-navbar {
+    background-color: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.custom-navbar .nav-link {
+    color: var(--color-text-light);
+    font-family: 'Architects Daughter', cursive;
+    transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+    color: var(--color-text-dark);
+}
+
+.main-card {
+    background-color: var(--color-card-bg);
+    border-radius: 1.5rem;
+    max-width: 900px;
+    width: 100%;
+    border: 1px solid var(--color-border);
+}
+
+.custom-btn {
     background-color: var(--color-primary);
     border: none;
-    color: var(--color-text);
+    color: var(--color-text-dark);
     font-family: 'Architects Daughter', cursive;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 2rem;
+    padding: 0.75rem 2rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
-.btn-custom:hover {
+.custom-btn:hover {
     background-color: var(--color-secondary);
     transform: scale(1.05);
-    color: var(--color-text);
+    color: var(--color-text-dark);
 }
+
+.info-card {
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-primary);
+    color: var(--color-text-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-card i {
+    color: var(--color-primary);
+}
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-question-box {
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+}
+
 .btn-option {
-    background-color: var(--bs-card-bg);
-    color: var(--bs-card-color);
-    border-radius: 1rem;
-    border: 1px solid var(--color-tertiary);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
     font-family: 'Architects Daughter', cursive;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 .btn-option:hover:not(:disabled) {
     background-color: var(--color-hover);
+    border-color: var(--color-primary);
 }
 .btn-option.correct {
     background-color: var(--color-correct);
@@ -114,5 +116,12 @@ body {
     border-color: var(--color-wrong);
 }
 .feedback-container {
-    background-color: var(--color-hover);
+    background-color: var(--color-card-bg);
+    color: var(--color-text-dark);
+    border-left: 5px solid var(--color-primary);
+}
+.custom-footer {
+    background-color: var(--color-card-bg);
+    color: var(--color-text-light);
+    border-top: 1px solid var(--color-border);
 }

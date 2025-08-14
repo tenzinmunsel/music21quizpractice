@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Mockup</title>
-    <!-- Bootstrap CSS for a cohesive and responsive layout -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Link to the custom CSS file for Nucleooo's styling -->
+    <title>Nucleooo</title>
+    <!-- Bootstrap CSS for a responsive grid and components -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Link to the separate CSS file -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts as per the styling guide -->
+    <!-- Google Fonts as per your style guide -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
+
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <!-- Correct logo URL -->
                 <img src="https://i.ibb.co/k6rx7q8Z/Nucleooo.png" alt="Nucleooo Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
                 <span class="logo-text">Nucleooo</span>
             </a>
@@ -29,7 +29,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- The theme toggle button has been removed -->
+                    <!-- Navigation links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="app.html">Quizzes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,36 +44,66 @@
     <!-- Main Content Container -->
     <div class="container my-5 text-center flex-grow-1 d-flex flex-column justify-content-center align-items-center">
         <!-- Main Application Display Area -->
-        <main id="app-container" class="card shadow p-4" style="max-width: 800px; width: 100%;">
-            <h1 class="header-font display-4 mb-4" id="main-title">Welcome to Nucleooo!</h1>
+        <main class="main-card shadow p-4">
+            <h1 class="header-font display-3 mb-4">Welcome to Nucleooo!</h1>
+            <p class="body-font lead mb-4">
+                Your go-to platform for interactive quizzes.
+            </p>
 
-            <!-- Homepage Screen -->
-            <div id="homepage-screen">
-                <h2 class="header-font display-5 mb-4">About Nucleooo</h2>
-                <p class="body-font lead mb-4">
-                    Nucleooo is an educational web application designed to help students learn and test their knowledge in various subjects through interactive quizzes. Our goal is to provide a simple, effective, and engaging learning experience for all skill levels.
-                </p>
-                <p class="body-font lead mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-                <!-- Image added here with responsive classes -->
-                <div class="my-4">
-                    <img src="https://i.ibb.co/21KCJfrz/styling-guide.png"
-                         alt="styling-guide" class="img-fluid border rounded shadow" />
+            <div class="row g-4 my-5 justify-content-center">
+                <!-- Info Card 1 -->
+                <div class="col-md-4">
+                    <div class="info-card p-4 rounded-3 h-100 shadow-sm">
+                        <i class="fa-solid fa-puzzle-piece fa-2x mb-3"></i>
+                        <h5 class="header-font">Engaging Quizzes</h5>
+                        <p class="body-font">Test your knowledge with fun, interactive quizzes on various subjects.</p>
+                    </div>
                 </div>
-                <a href="app.html" class="btn btn-custom btn-lg body-font">Start Quizzes</a>
+                <!-- Info Card 2 -->
+                <div class="col-md-4">
+                    <div class="info-card p-4 rounded-3 h-100 shadow-sm">
+                        <i class="fa-solid fa-graduation-cap fa-2x mb-3"></i>
+                        <h5 class="header-font">Multiple Subjects</h5>
+                        <p class="body-font">From history to science, we've got you covered with a wide range of topics.</p>
+                    </div>
+                </div>
+                <!-- Info Card 3 -->
+                <div class="col-md-4">
+                    <div class="info-card p-4 rounded-3 h-100 shadow-sm">
+                        <i class="fa-solid fa-chart-line fa-2x mb-3"></i>
+                        <h5 class="header-font">Track Progress</h5>
+                        <p class="body-font">Keep an eye on your scores and watch your skills improve over time.</p>
+                    </div>
+                </div>
             </div>
+
+            <a href="app.html" class="btn custom-btn btn-lg body-font mt-4">Start Learning</a>
+
+            <!-- New About Me section -->
+            <div class="my-5">
+                <div class="info-card p-4 rounded-3 shadow-sm text-start">
+                    <h5 class="header-font text-center">About the Founder</h5>
+                    <p class="body-font text-center">
+                        Nucleooo was founded by Tenzin Munsel with a passion for making learning accessible and fun. 
+                    </p>
+                </div>
+            </div>
+
+            <div class="my-5">
+                <img src="https://i.ibb.co/21KCJfrz/styling-guide.png" alt="styling-guide" class="img-fluid border rounded shadow">
+            </div>
+
         </main>
     </div>
 
     <!-- Footer -->
-    <footer class="text-center text-lg-start mt-auto">
-        <div class="text-center p-3" style="background-color: var(--color-tertiary);">
-            &copy; 2025 Nucleooo. All rights reserved. :)
+    <footer class="text-center text-lg-start mt-auto custom-footer">
+        <div class="text-center p-3">
+            &copy; 2025 Nucleooo. All rights reserved.
         </div>
     </footer>
 
     <!-- Bootstrap JS Bundle for interactive components -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
