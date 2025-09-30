@@ -3,107 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nucleooo</title>
-    <!-- Bootstrap CSS for a responsive grid and components -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <!-- Link to the separate CSS file -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts as per your style guide -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Music Terminology Quiz</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 20px; 
+            background-color: #f0f2f5; 
+            color: #1c1e21;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .quiz-container { 
+            max-width: 800px; 
+            width: 100%;
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #1877f2; 
+            text-align: center; 
+            margin-bottom: 30px;
+        }
+        .question { 
+            margin-bottom: 25px; 
+            padding: 20px; 
+            border: 1px solid #dddfe2; 
+            border-radius: 8px; 
+            background: #ffffff;
+            transition: box-shadow 0.3s ease;
+        }
+        .question:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .question p {
+            font-size: 1.1em;
+            margin-top: 0;
+        }
+        .options label { 
+            display: block; 
+            margin: 10px 0; 
+            padding: 12px;
+            border-radius: 6px;
+            background-color: #f0f2f5;
+            cursor: pointer; 
+            transition: background-color 0.3s ease;
+        }
+        .options label:hover {
+            background-color: #e4e6eb;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button { 
+            display: block;
+            width: 100%;
+            padding: 15px 20px; 
+            background-color: #1877f2; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 18px; 
+            font-weight: bold;
+            margin-top: 20px; 
+            transition: background-color 0.3s ease;
+        }
+        button:hover { 
+            background-color: #166fe5; 
+        }
+        .result { 
+            margin-top: 15px; 
+            padding: 12px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            display: none; 
+        }
+        .correct { 
+            background-color: #d4edda; 
+            color: #155724; 
+            border: 1px solid #c3e6cb;
+        }
+        .incorrect { 
+            background-color: #f8d7da; 
+            color: #721c24; 
+            border: 1px solid #f5c6cb;
+        }
+        .correct-answer-text { 
+            margin-top: 10px; 
+            color: #0d6efd; 
+            font-style: italic;
+            display: none;
+        }
+        #score {
+            text-align: center; 
+            font-size: 1.5em; 
+            margin-top: 30px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="https://i.ibb.co/k6rx7q8Z/Nucleooo.png" alt="Nucleooo Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
-                <span class="logo-text">Nucleooo</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Navigation links -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="app.html">Quizzes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div class="quiz-container">
+    <h1>Complete Music Terminology Quiz</h1>
+    <form id="musicQuiz">
 
-    <!-- Main Content Container -->
-    <div class="container my-5 text-center flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-        <!-- Main Application Display Area -->
-        <main class="main-card shadow p-4">
-            <h1 class="header-font display-3 mb-4">Welcome to Nucleooo!</h1>
-            <p class="body-font lead mb-4">
-                Your go-to platform for interactive quizzes.
-            </p>
+        <div class="question" data-answer="A"><p><strong>1.</strong> What is a strong, regular, repeated pattern of sound and silence?</p><div class="options"><label><input type="radio" name="q1" value="A"> Rhythm</label><label><input type="radio" name="q1" value="B"> Tempo</label><label><input type="radio" name="q1" value="C"> Beat</label><label><input type="radio" name="q1" value="D"> Genre</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Rhythm</div></div>
+        <div class="question" data-answer="B"><p><strong>2.</strong> What is the term for the speed at which a piece of music is played?</p><div class="options"><label><input type="radio" name="q2" value="A"> Beat</label><label><input type="radio" name="q2" value="B"> Tempo</label><label><input type="radio" name="q2" value="C"> Style</label><label><input type="radio" name="q2" value="D"> Rhythm</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Tempo</div></div>
+        <div class="question" data-answer="C"><p><strong>3.</strong> What is the fundamental, steady pulse that forms the unit of time in music?</p><div class="options"><label><input type="radio" name="q3" value="A"> Rhythm</label><label><input type="radio" name="q3" value="B"> Tempo</label><label><input type="radio" name="q3" value="C"> Beat</label><label><input type="radio" name="q3" value="D"> Subgenre</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Beat</div></div>
+        <div class="question" data-answer="D"><p><strong>4.</strong> Which note gets one beat of SOUND?</p><div class="options"><label><input type="radio" name="q4" value="A"> Eighth Note</label><label><input type="radio" name="q4" value="B"> Quarter Rest</label><label><input type="radio" name="q4" value="C"> Eighth Rest</label><label><input type="radio" name="q4" value="D"> Quarter Note</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Quarter Note</div></div>
+        <div class="question" data-answer="A"><p><strong>5.</strong> Which rest gets one beat of SILENCE?</p><div class="options"><label><input type="radio" name="q5" value="A"> Quarter Rest</label><label><input type="radio" name="q5" value="B"> Eighth Note</label><label><input type="radio" name="q5" value="C"> Quarter Note</label><label><input type="radio" name="q5" value="D"> Eighth Rest</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Quarter Rest</div></div>
+        <div class="question" data-answer="B"><p><strong>6.</strong> Which note gets half a beat of SOUND?</p><div class="options"><label><input type="radio" name="q6" value="A"> Quarter Note</label><label><input type="radio" name="q6" value="B"> Eighth Note</label><label><input type="radio" name="q6" value="C"> Quarter Rest</label><label><input type="radio" name="q6" value="D"> Eighth Rest</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Eighth Note</div></div>
+        <div class="question" data-answer="C"><p><strong>7.</strong> Which rest gets half a beat of SILENCE?</p><div class="options"><label><input type="radio" name="q7" value="A"> Quarter Rest</label><label><input type="radio" name="q7" value="B"> Quarter Note</label><label><input type="radio" name="q7" value="C"> Eighth Rest</label><label><input type="radio" name="q7" value="D"> Eighth Note</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Eighth Rest</div></div>
+        <div class="question" data-answer="D"><p><strong>8.</strong> What is a note that is played with more emphasis?</p><div class="options"><label><input type="radio" name="q8" value="A"> Tap</label><label><input type="radio" name="q8" value="B"> Quarter Note</label><label><input type="radio" name="q8" value="C"> Beat</label><label><input type="radio" name="q8" value="D"> Accented Note</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Accented Note</div></div>
+        <div class="question" data-answer="A"><p><strong>9.</strong> What is a note that is played with less emphasis?</p><div class="options"><label><input type="radio" name="q9" value="A"> Tap</label><label><input type="radio" name="q9" value="B"> Eighth Rest</label><label><input type="radio" name="q9" value="C"> Accented Note</label><label><input type="radio" name="q9" value="D"> Beat</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Tap</div></div>
+        <div class="question" data-answer="B"><p><strong>10.</strong> What is a classification system that categorizes music into different styles?</p><div class="options"><label><input type="radio" name="q10" value="A"> Style</label><label><input type="radio" name="q10" value="B"> Genre</label><label><input type="radio" name="q10" value="C"> Subgenre</label><label><input type="radio" name="q10" value="D"> Rhythm</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Genre</div></div>
+        <div class="question" data-answer="C"><p><strong>11.</strong> What is a smaller, more specific category within a larger genre?</p><div class="options"><label><input type="radio" name="q11" value="A"> Genre</label><label><input type="radio" name="q11" value="B"> Style</label><label><input type="radio" name="q11" value="C"> Subgenre</label><label><input type="radio" name="q11" value="D"> Tempo</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Subgenre</div></div>
+        <div class="question" data-answer="D"><p><strong>12.</strong> The particular characteristics of a piece of music (melody, harmony, etc.) are its:</p><div class="options"><label><input type="radio" name="q12" value="A"> Genre</label><label><input type="radio" name="q12" value="B"> Subgenre</label><label><input type="radio" name="q12" value="C"> Beat</label><label><input type="radio" name="q12" value="D"> Style</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Style</div></div>
+        <div class="question" data-answer="A"><p><strong>13.</strong> Who writes and arranges original music in a variety of musical styles?</p><div class="options"><label><input type="radio" name="q13" value="A"> Composer</label><label><input type="radio" name="q13" value="B"> Songwriter</label><label><input type="radio" name="q13" value="C"> Conductor</label><label><input type="radio" name="q13" value="D"> Producer</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Composer</div></div>
+        <div class="question" data-answer="B"><p><strong>14.</strong> Who creates the melody and writes the lyrics?</p><div class="options"><label><input type="radio" name="q14" value="A"> Composer</label><label><input type="radio" name="q14" value="B"> Songwriter</label><label><input type="radio" name="q14" value="C"> Arranger</label><label><input type="radio" name="q14" value="D"> Performer</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Songwriter</div></div>
+        <div class="question" data-answer="C"><p><strong>15.</strong> What family of instruments produces sound when struck, shaken, or scraped?</p><div class="options"><label><input type="radio" name="q15" value="A"> Brass</label><label><input type="radio" name="q15" value="B"> Woodwind</label><label><input type="radio" name="q15" value="C"> Percussion</label><label><input type="radio" name="q15" value="D"> Strings</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Percussion</div></div>
+        <div class="question" data-answer="D"><p><strong>16.</strong> Which drum is large, produces a low-pitched sound, and is often played with a foot pedal?</p><div class="options"><label><input type="radio" name="q16" value="A"> Snare Drum</label><label><input type="radio" name="q16" value="B"> Hi-hat</label><label><input type="radio" name="q16" value="C"> Tom-tom</label><label><input type="radio" name="q16" value="D"> Bass/Kick Drum</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Bass/Kick Drum</div></div>
+        <div class="question" data-answer="A"><p><strong>17.</strong> Which drum has wires (snares) stretched across the bottom head for a sharp sound?</p><div class="options"><label><input type="radio" name="q17" value="A"> Snare Drum</label><label><input type="radio" name="q17" value="B"> Bass Drum</label><label><input type="radio" name="q17" value="C"> Bongo</label><label><input type="radio" name="q17" value="D"> Hi-hat</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Snare Drum</div></div>
+        <div class="question" data-answer="B"><p><strong>18.</strong> Which instrument consists of a pair of cymbals mounted on a stand?</p><div class="options"><label><input type="radio" name="q18" value="A"> Crash Cymbal</label><label><input type="radio" name="q18" value="B"> Hi-hat Cymbal</label><label><input type="radio" name="q18" value="C"> Snare Drum</label><label><input type="radio" name="q18" value="D"> Ride Cymbal</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: Hi-hat Cymbal</div></div>
+        <div class="question" data-answer="C"><p><strong>19.</strong> What is the correct sticking pattern for a single stroke?</p><div class="options"><label><input type="radio" name="q19" value="A"> RRLL RRLL</label><label><input type="radio" name="q19" value="B"> RLRR LRLL</label><label><input type="radio" name="q19" value="C"> RLRL RLRL</label><label><input type="radio" name="q19" value="D"> LRLR LRLR</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: RLRL RLRL</div></div>
+        <div class="question" data-answer="D"><p><strong>20.</strong> What is the correct sticking pattern for a double stroke?</p><div class="options"><label><input type="radio" name="q20" value="A"> RLRL RLRL</label><label><input type="radio" name="q20" value="B"> RLRR LRLL</label><label><input type="radio" name="q20" value="C"> LLRR RRLL</label><label><input type="radio" name="q20" value="D"> RRLL RRLL</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: RRLL RRLL</div></div>
+        <div class="question" data-answer="A"><p><strong>21.</strong> What is the correct sticking pattern for a paradiddle?</p><div class="options"><label><input type="radio" name="q21" value="A"> RLRR LRLL</label><label><input type="radio" name="q21" value="B"> RRLL RRLL</label><label><input type="radio" name="q21" value="C"> RLRL RLRL</label><label><input type="radio" name="q21" value="D"> LRLR LRLR</label></div><div class="result"></div><div class="correct-answer-text">Correct Answer: RLRR LRLL</div></div>
 
-            <div class="row g-4 my-5 justify-content-center">
-                <!-- Info Card 1 -->
-                <div class="col-md-4">
-                    <div class="info-card p-4 rounded-3 h-100 shadow-sm">
-                        <i class="fa-solid fa-puzzle-piece fa-2x mb-3"></i>
-                        <h5 class="header-font">Engaging Quizzes</h5>
-                        <p class="body-font">Test your knowledge with fun, interactive quizzes on various subjects.</p>
-                    </div>
-                </div>
-                <!-- Info Card 2 -->
-                <div class="col-md-4">
-                    <div class="info-card p-4 rounded-3 h-100 shadow-sm">
-                        <i class="fa-solid fa-graduation-cap fa-2x mb-3"></i>
-                        <h5 class="header-font">Multiple Subjects</h5>
-                        <p class="body-font">From history to science, we've got you covered with a wide range of topics.</p>
-                    </div>
-                </div>
-                <!-- Info Card 3 -->
-                <div class="col-md-4">
-                    <div class="info-card p-4 rounded-3 h-100 shadow-sm">
-                        <i class="fa-solid fa-chart-line fa-2x mb-3"></i>
-                        <h5 class="header-font">Track Progress</h5>
-                        <p class="body-font">Keep an eye on your scores and watch your skills improve over time.</p>
-                    </div>
-                </div>
-            </div>
+        <button type="submit">Check My Answers</button>
+        <p id="score"></p>
 
-            <a href="app.html" class="btn custom-btn btn-lg body-font mt-4">Start Learning</a>
+    </form>
+</div>
 
-            <!-- New About Me section -->
-            <div class="my-5">
-                <div class="info-card p-4 rounded-3 shadow-sm text-start">
-                    <h5 class="header-font text-center">About the Founder</h5>
-                    <p class="body-font text-center">
-                        Nucleooo was founded by Tenzin Munsel with a passion for making learning accessible and fun. 
-                    </p>
-                </div>
-            </div>
+<script>
+    document.getElementById('musicQuiz').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let score = 0;
+        const questions = document.querySelectorAll('.question');
+        const totalQuestions = questions.length;
 
-            <div class="my-5">
-                <img src="https://i.ibb.co/21KCJfrz/styling-guide.png" alt="styling-guide" class="img-fluid border rounded shadow">
-            </div>
+        questions.forEach(question => {
+            const correctAnswer = question.getAttribute('data-answer');
+            const resultDiv = question.querySelector('.result');
+            const selected = question.querySelector('input[type="radio"]:checked');
+            const correctAnswerDiv = question.querySelector('.correct-answer-text');
 
-        </main>
-    </div>
+            resultDiv.style.display = 'block';
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start mt-auto custom-footer">
-        <div class="text-center p-3">
-            &copy; 2025 Nucleooo. All rights reserved.
-        </div>
-    </footer>
+            if (selected) {
+                if (selected.value === correctAnswer) {
+                    score++;
+                    resultDiv.className = 'result correct';
+                    resultDiv.textContent = 'Correct!';
+                } else {
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.textContent = 'Incorrect.';
+                    correctAnswerDiv.style.display = 'block';
+                }
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.textContent = 'Unanswered.';
+                correctAnswerDiv.style.display = 'block';
+            }
+        });
 
-    <!-- Bootstrap JS Bundle for interactive components -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        document.getElementById('score').textContent = `You scored ${score} out of ${totalQuestions}.`;
+        window.scrollTo(0, 0);
+    });
+</script>
+
 </body>
 </html>
